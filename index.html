@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary Assistant - Trợ lý ảo cho Windows</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow: auto; /* Cho phép lăn chuột */
+        }
+        header {
+            background: #4CAF50;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            padding: 0.5rem 0;
+            background: #333;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 2rem;
+        }
+        .button-download {
+            display: inline-block;
+            background: #4CAF50;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+        .button-download:hover {
+            background: #45a049;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+            position: relative;
+        }
+        #intro-circle {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+        .hidden {
+            display: none;
+        }
+        #typing-text {
+            font-size: 1.2rem;
+            color: green; /* Chỉnh lại màu chữ thành màu xanh lá */
+            text-align: center;
+            margin-top: 150px; /* Đặt vị trí dưới vòng tròn */
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="intro-circle"></div>
+    <div id="typing-text"></div>
+
+    <div id="main-content" class="hidden">
+        <header>
+            <h1>Mary Assistant</h1>
+            <p>Trợ lý ảo dành cho máy tính Windows</p>
+        </header>
+
+        <nav>
+            <a href="#about">Giới thiệu</a>
+            <a href="#features">Chức năng</a>
+            <a href="#download">Tải xuống</a>
+        </nav>
+
+        <section id="about">
+            <h2>Giới thiệu</h2>
+            <p>Mary Assistant là một trợ lý ảo được thiết kế để hỗ trợ người dùng Windows 10 và 11. Sản phẩm sử dụng giọng nói để điều khiển các chức năng cơ bản của máy tính, mang lại tiện ích đặc biệt cho người khuyết tật và người dùng muốn thao tác nhanh chóng mà không cần dùng chuột hoặc bàn phím.</p>
+        </section>
+
+        <section id="features">
+            <h2>Chức năng chính</h2>
+            <ul>
+                <li>Nhận lệnh bằng giọng nói để điều khiển máy tính.</li>
+                <li>Hỗ trợ mở ứng dụng, tìm kiếm thông tin trên Google.</li>
+                <li>Trả lời các phép tính toán học cơ bản.</li>
+                <li>Giao diện tối giản, thân thiện với người dùng.</li>
+            </ul>
+        </section>
+
+        <section id="download">
+            <h2>Tải xuống</h2>
+            <p>Mary Assistant hiện hỗ trợ hệ điều hành Windows 10 và 11 (64-bit). Hãy nhấn nút bên dưới để tải xuống tệp cài đặt và tài liệu hướng dẫn sử dụng:</p>
+            <a class="button-download" href="https://www.dropbox.com/scl/fi/w9r7e90iwna91i597y7vg/AssistantSetup.exe?rlkey=c709b26swff15tjfqcw8tfrmg&st=468kky3n&dl=1" target="_blank">Tải xuống Mary Assistant</a>
+        </section>
+
+        <footer>
+            <p> 2024 - Mary Assistant | Trợ lý ảo cho Windows</p>
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const typingText = document.getElementById('typing-text');
+            const mainContent = document.getElementById('main-content');
+            const introCircle = document.getElementById('intro-circle');
+
+            const textToType = "Xin chào! Tôi là Mary. Rất vui được gặp bạn!";
+
+            let i = 0;
+            let typingInterval = setInterval(() => {
+                typingText.textContent += textToType[i];
+                i++;
+                if (i === textToType.length) {
+                    clearInterval(typingInterval);
+                    setTimeout(() => {
+                        introCircle.classList.add('hidden');
+                        typingText.classList.add('hidden');
+                        mainContent.classList.remove('hidden');
+                    }, 2000); // Đợi 2 giây sau khi gõ xong
+                }
+            }, 50);
+        });
+    </script>
+</body>
+</html>
